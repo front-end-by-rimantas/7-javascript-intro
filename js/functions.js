@@ -197,3 +197,47 @@ console.log( isrinktiRaides( "abc", 4 ) );
 console.log( isrinktiRaides( "abcdefg", 2 ) );
 console.log( isrinktiRaides( "abcdefghijkl", 3 ) );
 console.log( isrinktiRaides( "3.1415e0", 2 ) );
+
+
+console.log('----------------------');
+
+
+function dalyba( a, b, precision ) {
+    if ( typeof(a) !== 'number' ||
+         typeof(b) !== 'number' ||
+         isNaN(a) ||
+         isNaN(b) ) {
+        return 'Dalyba galima tik su tikrais skaiciais.';
+    }
+    if ( b === 0 ) {
+        return 'Dalyba is nulio negalima.'
+    }
+
+    return a / b;
+}
+
+// nelabai teisingi
+console.log( dalyba( true, false ) );
+console.log( dalyba( 'true', 'false' ) );
+console.log( dalyba( ['true'], ['false'] ) );
+console.log( dalyba( 5, NaN ) );
+console.log( dalyba( NaN, 5 ) );
+console.log( dalyba( 5, 0 ) );
+console.log( dalyba( 0, 0 ) );
+console.log( dalyba( '5', '5' ) );
+console.log( dalyba( -'5', -'asd' ) );
+console.log( dalyba( +'2+2', 2 ) );
+console.log( dalyba( +'2'+'2', 2 ) );
+// teisingi
+console.log( dalyba( +('2'+'2'), 2 ) );
+console.log( dalyba( -'5', -'5' ) );
+console.log( dalyba( +'5', +'5' ) );
+console.log( dalyba( 10, 2 ) );
+console.log( dalyba( 0.5, -.2 ) );
+console.log( dalyba( 0, -.2 ) );
+console.log( dalyba( 5, 5 ) );
+console.log( dalyba( 5, 5e0 ) );
+console.log( dalyba( 2+2, Math.PI ) );
+console.log( dalyba( -1050, -50 ) );
+console.log( dalyba( -1050, Infinity ) );
+console.log( dalyba( Infinity, -1050 ) );

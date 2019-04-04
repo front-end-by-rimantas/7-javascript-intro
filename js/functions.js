@@ -202,7 +202,7 @@ console.log( isrinktiRaides( "3.1415e0", 2 ) );
 console.log('----------------------');
 
 
-function dalyba( a, b, precision ) {
+function dalyba( a, b ) {
     if ( typeof(a) !== 'number' ||
          typeof(b) !== 'number' ||
          isNaN(a) ||
@@ -215,6 +215,7 @@ function dalyba( a, b, precision ) {
 
     return a / b;
 }
+
 
 // nelabai teisingi
 console.log( dalyba( true, false ) );

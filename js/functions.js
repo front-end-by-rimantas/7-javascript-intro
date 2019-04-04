@@ -141,3 +141,59 @@ console.log( didziausiasSkaiciusSarase( 'pomidoras' ) );
 console.log( didziausiasSkaiciusSarase( [] ) );
 
 console.log( 'don\'t be lame with ""' );
+
+
+console.log('----------------------');
+
+
+function isrinktiRaides( text, exclude ) {
+    console.log('-----');
+    console.log(text+' - '+exclude);
+    
+    var rezultatas = '';
+    if ( typeof(text) !== 'string' ) {
+        return 'Pirmasis kintamasis yra netinkamo tipo.';
+    }
+    if ( text.length < 1 || text.length > 100 ) {
+        return 'Pirmojo kintamojo reikšmė yra netinkamo dydžio.';
+    }
+    if ( typeof(exclude) !== 'number' ||
+        //  isNaN(exclude) === true ||
+         isNaN(exclude) ||
+        //  isFinite(exclude) !== true ||
+         !isFinite(exclude) ) {
+        return 'Antrasis kintamasis yra netinkamo tipo.';
+    }
+    if ( exclude < 1 ) {
+        return 'Antrasis kintamasis turi būti didesnis už nulį.';
+    }
+    if ( exclude > text.length ) {
+        return 'Antrasis kintamasis turi būti ne didesnis už pateikto teksto ilgį.';
+    }
+    if ( exclude % 1 > 0 ) {
+        return 'Antrasis kintamasis negali būti ne sveikasis skaičius.';
+    }
+
+    // isrenkame kas kelinta raide is duoto teksto
+    for ( var i=exclude-1; i<text.length; i=i+exclude ) {
+        rezultatas += text[i];
+        // rezultatas += text.charAt(i);
+    }
+
+    return rezultatas;
+}
+
+// nelabai teisingi
+console.log( isrinktiRaides( "abc", 0 ) );
+console.log( isrinktiRaides( "", 0 ) );
+console.log( isrinktiRaides( "", 4 ) );
+console.log( isrinktiRaides( 1561, 2 ) );
+console.log( isrinktiRaides( false, 2 ) );
+console.log( isrinktiRaides( "text", NaN ) );
+console.log( isrinktiRaides( "text", Infinity ) );
+console.log( isrinktiRaides( "text", Math.PI ) );
+console.log( isrinktiRaides( "abc", 4 ) );
+// teisingi
+console.log( isrinktiRaides( "abcdefg", 2 ) );
+console.log( isrinktiRaides( "abcdefghijkl", 3 ) );
+console.log( isrinktiRaides( "3.1415e0", 2 ) );
